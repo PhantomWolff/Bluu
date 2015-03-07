@@ -58,7 +58,7 @@ part_type_direction(particle1,30,150,0,0);
 part_type_gravity(particle1,0.30,270);
 part_type_orientation(particle1,0,0,0,0,0);
 part_type_blend(particle1,0);
-part_type_life(particle1,60,80);
+part_type_life(particle1,50,50);
 
 //MISCELLANEOUS
 

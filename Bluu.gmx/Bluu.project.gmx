@@ -39,6 +39,7 @@
       <sprites name="spikes">
         <sprite>sprites\spr_spike_up</sprite>
         <sprite>sprites\spr_spike_down</sprite>
+        <sprite>sprites\spr_spike_moving</sprite>
       </sprites>
       <sprites name="minions">
         <sprite>sprites\spr_minion</sprite>
@@ -58,10 +59,16 @@
     <sprite>sprites\spr_trigger</sprite>
   </sprites>
   <backgrounds name="background"/>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\path_horizontal_left</path>
+    <path>paths\path_vertical_up</path>
+    <path>paths\path_vertical_down</path>
+    <path>paths\path_horizontal_right</path>
+  </paths>
   <scripts name="scripts">
     <script>scripts\scr_text.gml</script>
   </scripts>
+  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\fnt</font>
   </fonts>
@@ -78,6 +85,7 @@
       <objects name="spikes">
         <object>objects\obj_spike_down</object>
         <object>objects\obj_spike_up</object>
+        <object>objects\obj_spike_moving_horizontal</object>
       </objects>
     </objects>
     <objects name="powerup objects">
