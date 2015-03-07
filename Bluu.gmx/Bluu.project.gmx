@@ -85,7 +85,10 @@
       <objects name="spikes">
         <object>objects\obj_spike_down</object>
         <object>objects\obj_spike_up</object>
-        <object>objects\obj_spike_moving_horizontal</object>
+        <object>objects\obj_spike_moving_left</object>
+        <object>objects\obj_spike_moving_right</object>
+        <object>objects\obj_spike_moving_up</object>
+        <object>objects\obj_spike_moving_down</object>
       </objects>
     </objects>
     <objects name="powerup objects">
