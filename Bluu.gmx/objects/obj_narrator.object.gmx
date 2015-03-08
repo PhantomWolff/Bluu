@@ -89,9 +89,9 @@ if ((global.narrate == true) &amp;&amp; (room == room1)){
 if ((global.narrate == true) &amp;&amp; (room == room2)){
     switch(script){
         case 0: scr_text("Did you think your#journey would be easy?",0.5,32,600);break;
-        case 1: scr_text("Think again...",0.5,140,340);break;
+        case 1: scr_text("Think again...",0.5,120,350);break;
         case 2: scr_text("Now, risk your life.",0.5,480,40);break;
-        case 3: scr_text("Every success will#bring you closer.",0.5,800,600);break;
+        case 3: scr_text("Every success will#bring you closer.",0.5,600,600);break;
     }
     script += 1;
     global.narrate = false;

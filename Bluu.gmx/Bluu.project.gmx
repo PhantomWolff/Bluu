@@ -26,6 +26,8 @@
   <sounds name="sound">
     <sounds name="music">
       <sound>sound\mus_blue</sound>
+      <sound>sound\mus_song1</sound>
+      <sound>sound\mus_song2</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -104,9 +106,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room3</room>
     <room>rooms\room1</room>
     <room>rooms\room2</room>
-    <room>rooms\room3</room>
     <room>rooms\room4</room>
   </rooms>
   <help>
