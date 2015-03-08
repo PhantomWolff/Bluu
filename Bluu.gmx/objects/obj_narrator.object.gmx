@@ -79,7 +79,7 @@ if ((global.narrate == true) &amp;&amp; (room == room1)){
         case 0: scr_text("Welcome, Bluu...#Use A and D to move.",0.5,32,560);break;
         case 1: scr_text("Jump over obstacles#with W.",0.5,220,530);break;
         case 2: scr_text("Press W again while#in the air for#another jump.",0.5,395,520);break;
-        case 3: scr_text("Press S to advance#while touching the portal.",0.5,800,520);break;
+        case 3: scr_text("Press S to advance#while touching the portal.",0.5,800,560);break;
     }
     script += 1;
     global.narrate = false;
@@ -92,6 +92,23 @@ if ((global.narrate == true) &amp;&amp; (room == room2)){
         case 1: scr_text("Think again...",0.5,120,350);break;
         case 2: scr_text("Now, risk your life.",0.5,480,40);break;
         case 3: scr_text("Every success will#bring you closer.",0.5,600,600);break;
+    }
+    script += 1;
+    global.narrate = false;
+}
+
+//Room 3
+if ((global.narrate == true) &amp;&amp; (room == room3)){
+    switch(script){
+        case 0: scr_text("Please be careful.",0.5,32,610);break;
+        case 1: scr_text("Falling now would prove to#be a very bad idea.",0.5,110,350);break;
+        case 2: scr_text("You can make it!",0.5,200,120);break;
+        case 3: scr_text("Hey...",0.5,600,650);break;
+        case 4: scr_text("You better watch out...",0.5,750,650);break;
+        case 5: scr_text("It's about to get dicy.",0.5,1100,650);break;
+        case 6: scr_text("Those moving things might help.",0.5,120,350);break;
+        case 7: scr_text("You're doing quite well.",0.5,480,40);break;
+        case 8: scr_text("Every success will#bring you closer.",0.5,600,600);break;
     }
     script += 1;
     global.narrate = false;

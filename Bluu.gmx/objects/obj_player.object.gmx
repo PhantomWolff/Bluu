@@ -31,15 +31,23 @@
 grav = 0.35;
 hsp = 0;
 vsp = 0;
-move_speed = 3.5;
-player_dead = false;
-
+hsp_carry = 0;
+move_speed_normal = 3.5;
+move_speed_boosted = 6;
+move_speed = move_speed_normal;
 jump_speed = 7.5;
 jumps = 0;
 jumps_max = 2;
 air_jump_speed = 6;
 
 img_speed = 0.4;
+
+can_advance_level = true;
+player_dead = false;
+powerup = false;
+
+
+
 
 
 
@@ -51,7 +59,7 @@ particle1 = part_type_create();
 part_type_shape(particle1,pt_shape_square);
 part_type_size(particle1,0.05,0.05,0,0);
 part_type_scale(particle1,1,1);
-part_type_color1(particle1,make_color_rgb(2,11,78));
+part_type_color1(particle1,make_color_rgb(38,48,198));
 part_type_alpha1(particle1,1);
 part_type_speed(particle1,5,12,0,0);
 part_type_direction(particle1,30,150,0,0);
@@ -60,11 +68,81 @@ part_type_orientation(particle1,0,0,0,0,0);
 part_type_blend(particle1,0);
 part_type_life(particle1,50,50);
 
+particle2 = part_type_create();
+part_type_shape(particle2,pt_shape_square);
+part_type_size(particle2,0.05,0.05,0,0);
+part_type_scale(particle2,1,1);
+part_type_color1(particle2,make_color_rgb(38,48,198));
+part_type_alpha1(particle2,1);
+part_type_speed(particle2,1,2,0,0);
+part_type_direction(particle2,0,359,0,0);
+part_type_gravity(particle2,0.10,90);
+part_type_orientation(particle2,0,0,0,0,0);
+part_type_blend(particle2,0);
+part_type_life(particle2,20,40);
+
+
+
 //MISCELLANEOUS
 
 newfont = font_add( 'coders_crux', 12, true, false, 32, 128);
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>emitter2 = part_emitter_create(Sname);
+part_emitter_region(Sname,emitter2,obj_player.x+4,obj_player.x-4,obj_player.y+4,obj_player.y-4,0,0);
+part_emitter_burst(Sname,emitter2,particle2,2);
+if(powerup){
+    alarm[2] = 2;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Return speed to normal
+
+powerup = false;
+move_speed = move_speed_normal;
+img_speed = 0.4;
 </string>
           </argument>
         </arguments>
@@ -113,10 +191,9 @@ newfont = font_add( 'coders_crux', 12, true, false, 32, 128);
             <string>//Player's input
 key_right = keyboard_check(ord('D'));
 key_left = keyboard_check(ord('A'));
-key_down = keyboard_check_pressed(ord('S'));
+key_down = keyboard_check(ord('S'));
 key_jump_held = keyboard_check(ord('W'));
 key_jump = keyboard_check_pressed(ord('W'));
-
 
 //Move based on inputs
 move = -key_left + key_right;
@@ -136,21 +213,24 @@ if (key_jump &amp;&amp; (jumps &gt; 0)){
         vsp = -jump_speed;
     }
     jumps -= 1;
-}   
+}
 
 if ((vsp &lt; 0 ) &amp;&amp; (!key_jump_held)){
     vsp = max(vsp,(-jump_speed/2));
 }
 
+var hsp_final = hsp + hsp_carry;
+hsp_carry = 0;
 
 //Horizontal Collision
-if (place_meeting(x+hsp,y,obj_wall)){
-    while(!place_meeting(x+sign(hsp),y,obj_wall)){
-        x += sign(hsp);
+if (place_meeting(x+hsp_final,y,obj_wall)){
+    while(!place_meeting(x+sign(hsp_final),y,obj_wall)){
+        x += sign(hsp_final);
     }
+    hsp_final = 0;
     hsp = 0;
 }
-x += hsp;
+x += hsp_final;
 
 
 //Vertical Collision
@@ -163,6 +243,7 @@ if (place_meeting(x,y+vsp,obj_wall)){
 y += vsp;
 
 
+
 //Animations for movement
 image_speed = img_speed;
 
@@ -170,8 +251,16 @@ if (move != 0){
     image_xscale = move;
 }
 if (place_meeting(x,y+1,obj_wall)){
+    if(key_down){
+        sprite_index = spr_player_down;
+    }
     if (move != 0){
-        sprite_index = spr_player_walk;
+        if(key_down){
+            sprite_index = spr_player_down_walk;
+        }
+        else{
+            sprite_index = spr_player_walk;
+        }
     }
     else{
         sprite_index = spr_player_idle;
@@ -185,10 +274,18 @@ else{
         sprite_index = spr_player_fall;
     }
 }
-
 //Collision with Spikes
 if (place_meeting(x,y,obj_spike_up)){
     player_dead = true;
+}
+
+//Collision with Speed Boost
+if (place_meeting(x,y,obj_speed_boost)){
+    move_speed = move_speed_boosted;
+    img_speed = 0.6;
+    alarm[1] = 60;
+    alarm[2] = 2;
+    powerup = true;
 }
 
 //Player death
@@ -201,10 +298,19 @@ if (player_dead){
     instance_create(x,y,obj_fade_restart_room);
 }
 
-//Goal
-if (key_down &amp;&amp; place_meeting(x,y,obj_goal)){
-    instance_create(x,y,obj_fade_next_room);
+//goal
+if (key_down){
+    if(place_meeting(x,y,obj_goal) &amp;&amp; can_advance_level){
+        instance_create(x,y,obj_fade_next_room);
+        // Delay so they can't press S over and over to advance more than one level.
+        can_advance_level = false;
+    }
 }
+
+
+
+
+
 </string>
           </argument>
         </arguments>
