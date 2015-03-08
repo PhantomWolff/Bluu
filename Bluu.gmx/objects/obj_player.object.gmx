@@ -34,10 +34,10 @@ vsp = 0;
 move_speed = 3.5;
 player_dead = false;
 
-jump_speed = 7;
+jump_speed = 7.5;
 jumps = 0;
 jumps_max = 2;
-air_jump_speed = 2;
+air_jump_speed = 6;
 
 img_speed = 0.4;
 
@@ -129,12 +129,14 @@ if (place_meeting(x,y+1,obj_wall)){
 }
 
 if (key_jump &amp;&amp; (jumps &gt; 0)){
-    jumps -= 1;
     if(jumps &lt; jumps_max){
         vsp = -air_jump_speed;
     }
-    vsp = -jump_speed;
-}
+    else{
+        vsp = -jump_speed;
+    }
+    jumps -= 1;
+}   
 
 if ((vsp &lt; 0 ) &amp;&amp; (!key_jump_held)){
     vsp = max(vsp,(-jump_speed/2));

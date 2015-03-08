@@ -74,22 +74,24 @@ alarm[0] = 10;
           <argument>
             <kind>1</kind>
             <string>//Room 1
-if ((global.narrate == true) &amp;&amp; (room == rm_level_1)){
+if ((global.narrate == true) &amp;&amp; (room == room1)){
     switch(script){
-        case 0: scr_text("Welcome, Bluu...#Use WASD to move.",0.5,32,600);break;
-        case 1: scr_text("Watch out#for spikes",0.5,80,520);break;
-        case 2: scr_text("Find the exit portal.",0.5,210,490);break;
+        case 0: scr_text("Welcome, Bluu...#Use A and D to move.",0.5,32,560);break;
+        case 1: scr_text("Jump over obstacles#with W.",0.5,220,530);break;
+        case 2: scr_text("Press W again while#in the air for#another jump.",0.5,395,520);break;
+        case 3: scr_text("Press S to advance#while touching the portal.",0.5,800,520);break;
     }
     script += 1;
     global.narrate = false;
 }
 
 //Room 2
-if ((global.narrate == true) &amp;&amp; (room == rm_level_2)){
+if ((global.narrate == true) &amp;&amp; (room == room2)){
     switch(script){
-        case 0: scr_text("Welcome, Bluu...This is level two.",0.5,32,600);break;
-        case 1: scr_text("Spikes are still dangerous.",0.5,80,520);break;
-        case 2: scr_text("Find the exit portal.",0.5,210,490);break;
+        case 0: scr_text("Did you think your#journey would be easy?",0.5,32,600);break;
+        case 1: scr_text("Think again...",0.5,140,340);break;
+        case 2: scr_text("Now, risk your life.",0.5,480,40);break;
+        case 3: scr_text("Every success will#bring you closer.",0.5,800,600);break;
     }
     script += 1;
     global.narrate = false;

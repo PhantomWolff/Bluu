@@ -57,6 +57,7 @@
     </sprites>
     <sprite>sprites\spr_goal</sprite>
     <sprite>sprites\spr_trigger</sprite>
+    <sprite>sprites\spr_gift</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -68,11 +69,11 @@
   <scripts name="scripts">
     <script>scripts\scr_text.gml</script>
   </scripts>
-  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\fnt</font>
   </fonts>
   <objects name="objects">
+    <object>objects\obj_trigger</object>
     <object>objects\obj_player</object>
     <objects name="wall objects">
       <object>objects\obj_wall</object>
@@ -96,16 +97,14 @@
     </objects>
     <object>objects\obj_goal</object>
     <objects name="Metagame objects">
-      <object>objects\obj_trigger</object>
       <object>objects\obj_text</object>
-      <object>objects\obj_narrator</object>
       <object>objects\obj_fade_next_room</object>
       <object>objects\obj_fade_restart_room</object>
+      <object>objects\obj_narrator</object>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_level_1</room>
-    <room>rooms\rm_level_2</room>
+    <room>rooms\room1</room>
     <room>rooms\room2</room>
     <room>rooms\room3</room>
     <room>rooms\room4</room>
