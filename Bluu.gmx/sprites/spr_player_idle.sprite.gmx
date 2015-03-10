@@ -37,6 +37,5 @@
     <frame index="14">images\spr_player_idle_14.png</frame>
     <frame index="15">images\spr_player_idle_15.png</frame>
     <frame index="16">images\spr_player_idle_16.png</frame>
-    <frame index="17">images\spr_player_idle_17.png</frame>
   </frames>
 </sprite>

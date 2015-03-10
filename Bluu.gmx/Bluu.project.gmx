@@ -37,7 +37,6 @@
       <sprite>sprites\spr_player_fall</sprite>
       <sprite>sprites\spr_player_walk</sprite>
       <sprite>sprites\spr_player_down</sprite>
-      <sprite>sprites\spr_player_down_walk</sprite>
     </sprites>
     <sprites name="enemy sprites">
       <sprites name="spikes">
@@ -112,8 +111,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
-    <room>rooms\room3</room>
     <room>rooms\room2</room>
+    <room>rooms\room3</room>
     <room>rooms\room4</room>
   </rooms>
   <help>

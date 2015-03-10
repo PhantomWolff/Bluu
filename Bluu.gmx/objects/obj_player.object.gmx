@@ -246,21 +246,15 @@ y += vsp;
 
 //Animations for movement
 image_speed = img_speed;
-
+if(key_down){
+    sprite_index = spr_player_down;
+}
 if (move != 0){
     image_xscale = move;
 }
 if (place_meeting(x,y+1,obj_wall)){
-    if(key_down){
-        sprite_index = spr_player_down;
-    }
     if (move != 0){
-        if(key_down){
-            sprite_index = spr_player_down_walk;
-        }
-        else{
-            sprite_index = spr_player_walk;
-        }
+        sprite_index = spr_player_walk;
     }
     else{
         sprite_index = spr_player_idle;
@@ -274,6 +268,10 @@ else{
         sprite_index = spr_player_fall;
     }
 }
+if(key_down){
+    sprite_index = spr_player_down;
+}
+
 //Collision with Spikes
 if (place_meeting(x,y,obj_spike_up)){
     player_dead = true;
